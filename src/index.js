@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import "./style/main.less"
+import "./style/main.less";
+import "./semantic/dist/semantic.min.scss"
 
 class Welcome extends React.Component {
     render () {
