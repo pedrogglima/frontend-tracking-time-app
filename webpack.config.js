@@ -1,12 +1,17 @@
+'use strict';
+
+const path = require('path');
+const dirPublic = path.resolve(__dirname, 'public');
+
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: __dirname + '/public',
-    publicPath: '/',
-    filename: 'bundle.js'
+    path: dirPublic,
+    filename: 'bundle.js',
   },
   devServer: {
-    contentBase: './public',
+    contentBase: dirPublic,
+    port: 3000,
   },
   devtool: 'inline-source-map',
   module: {

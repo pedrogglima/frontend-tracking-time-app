@@ -6,7 +6,9 @@
   "scripts": {
     "format": "prettier --write \"src/**/*.js\"",
     "eslint-fix": "eslint --fix \"src/**/*.js\"",
-    "start:dev": "webpack-dev-server --mode development",
+    "build": "webpack -p",
+    "start:dev": "webpack-dev-server",
+    "start:dev:server": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
