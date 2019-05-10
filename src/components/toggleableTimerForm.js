@@ -1,0 +1,23 @@
+import React from 'react';
+import TimerForm from './timerForm.js';
+import "../semantic/dist/semantic.min.scss"
+
+class ToggleableTimerForm extends React.Component {
+  render() {
+    if (this.props.isOpen) {
+      return (
+        <TimerForm />
+      );
+    } else {
+      return (
+        <div className='ui basic content center aligned segment'>
+          <button className='ui basic button icon'>
+            <i className='plus icon' />
+          </button>
+        </div>
+      );
+    }
+  }
+}
+
+export default ToggleableTimerForm;
