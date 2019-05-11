@@ -1,26 +1,25 @@
 import React from 'react';
-import "../semantic/dist/semantic.min.scss"
 
 class TimerForm extends React.Component {
   render() {
     const submitText = this.props.title ? 'Update' : 'Create';
     return (
-      <div className='ui centered card'>
-        <div className='content'>
-          <div className='ui form'>
-            <div className='field'>
+      <div className=''>
+        <div className=''>
+          <div className=''>
+            <div className=''>
               <label>Title</label>
               <input type='text' defaultValue={this.props.title} />
             </div>
-            <div className='field'>
+            <div className=''>
               <label>Project</label>
               <input type='text' defaultValue={this.props.project} />
             </div>
-            <div className='ui two bottom buttons'>
-              <button className='ui basic blue button'>
+            <div className=''>
+              <button className=''>
                 {submitText}
               </button>
-              <button className='ui basic red button'>
+              <button className=''>
                 Cancel
               </button>
             </div>

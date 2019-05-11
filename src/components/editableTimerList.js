@@ -1,6 +1,5 @@
 import React from 'react';
 import EditableTimer from './editableTimer.js';
-import "../semantic/dist/semantic.min.scss"
 
 class EditableTimerList extends React.Component {
   render() {

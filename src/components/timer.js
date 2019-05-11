@@ -1,33 +1,32 @@
 import React from 'react';
-import "../semantic/dist/semantic.min.scss"
 
 class Timer extends React.Component {
   render() {
     const elapsedString = ''; //helpers.renderElapsedString(this.props.elapsed);
     return (
-      <div className='ui centered card'>
-        <div className='content'>
-          <div className='header'>
+      <div className=''>
+        <div className=''>
+          <div className=''>
             {this.props.title}
           </div>
-          <div className='meta'>
+          <div className=''>
             {this.props.project}
           </div>
-          <div className='center aligned description'>
+          <div className=''>
             <h2>
               {elapsedString}
             </h2>
           </div>
-          <div className='extra content'>
-            <span className='right floated edit icon'>
-              <i className='edit icon' />
+          <div className=''>
+            <span className=''>
+              <i className='' />
             </span>
-            <span className='right floated trash icon'>
-              <i className='trash icon' />
+            <span className=''>
+              <i className='' />
             </span>
           </div>
         </div>
-        <div className='ui bottom attached blue basic button'>
+        <div className=''>
           Start
         </div>
       </div>
