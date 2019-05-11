@@ -1,5 +1,7 @@
 import React from 'react';
 import TimerForm from './timerForm.js';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 class ToggleableTimerForm extends React.Component {
   render() {
@@ -9,11 +11,11 @@ class ToggleableTimerForm extends React.Component {
       );
     } else {
       return (
-        <div className=''>
-          <button className=''>
-            <i className='' />
-          </button>
-        </div>
+        <Card>
+          <CardContent>
+            +
+          </CardContent>
+        </Card>
       );
     }
   }

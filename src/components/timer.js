@@ -1,35 +1,19 @@
 import React from 'react';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 class Timer extends React.Component {
   render() {
     const elapsedString = ''; //helpers.renderElapsedString(this.props.elapsed);
     return (
-      <div className=''>
-        <div className=''>
-          <div className=''>
-            {this.props.title}
-          </div>
-          <div className=''>
-            {this.props.project}
-          </div>
-          <div className=''>
-            <h2>
-              {elapsedString}
-            </h2>
-          </div>
-          <div className=''>
-            <span className=''>
-              <i className='' />
-            </span>
-            <span className=''>
-              <i className='' />
-            </span>
-          </div>
-        </div>
-        <div className=''>
+      <Card>
+        <CardContent>
+          {this.props.title}
+          {this.props.project}
+          {elapsedString}
           Start
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     );
   }
 }

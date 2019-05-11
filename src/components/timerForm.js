@@ -1,31 +1,21 @@
 import React from 'react';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 class TimerForm extends React.Component {
   render() {
     const submitText = this.props.title ? 'Update' : 'Create';
     return (
-      <div className=''>
-        <div className=''>
-          <div className=''>
-            <div className=''>
-              <label>Title</label>
-              <input type='text' defaultValue={this.props.title} />
-            </div>
-            <div className=''>
-              <label>Project</label>
-              <input type='text' defaultValue={this.props.project} />
-            </div>
-            <div className=''>
-              <button className=''>
-                {submitText}
-              </button>
-              <button className=''>
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Card
+        style={{ maxWidth: '280px', minWidth: '280px' }}
+      >
+        <CardContent>
+          {this.props.title}
+          {this.props.project}
+          {submitText}
+          Start
+        </CardContent>
+      </Card>
     );
   }
 }
