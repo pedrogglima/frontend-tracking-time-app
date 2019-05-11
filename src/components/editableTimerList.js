@@ -9,14 +9,11 @@ class EditableTimerList extends React.Component {
         <Grid
           container
           direction="column"
-          alignItems="center"
+          alignItems="stretch"
           justify="center"
-          spacing={0}
+          spacing={8}
         >
-          <Grid
-            item
-            style={{ maxWidth: '280px', minWidth: '280px' }}
-          >
+          <Grid item>
             <EditableTimer
               title='Learn React'
               project='Web Domination'
@@ -25,10 +22,7 @@ class EditableTimerList extends React.Component {
               editFormOpen={false}
             />
           </Grid>
-          <Grid
-            item
-            style={{ maxWidth: '280px', minWidth: '280px' }}
-          >
+          <Grid item>
             <EditableTimer
               title='Learn extreme ironing'
               project='World Domination'

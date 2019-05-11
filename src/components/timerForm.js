@@ -6,9 +6,7 @@ class TimerForm extends React.Component {
   render() {
     const submitText = this.props.title ? 'Update' : 'Create';
     return (
-      <Card
-        style={{ maxWidth: '280px', minWidth: '280px' }}
-      >
+      <Card> 
         <CardContent>
           {this.props.title}
           {this.props.project}

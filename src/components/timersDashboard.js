@@ -14,14 +14,14 @@ class TimersDashboard extends React.Component {
       >
         <Grid
           item
-          style={{ maxWidth: '300px', minWidth: '280px' }}
+          style={{ maxWidth: '300px', minWidth: '300px' }}
         >
           <Grid
             container
             direction="column"
-            alignItems="center"
+            alignItems="stretch"
             justify="center"
-            spacing={0}
+            spacing={16}
           >
             <Grid item>
               <EditableTimerList />
