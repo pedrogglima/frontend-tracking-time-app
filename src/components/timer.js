@@ -27,7 +27,8 @@ class Timer extends React.Component {
           <IconButton aria-label="Edit" style={{ float: 'right' }}>
             <span className="material-icons">edit</span>
           </IconButton>
-          <Button variant="contained" size="large" fullWidth={true}>
+
+          <Button variant="outlined" color='primary' size="large" fullWidth={true}>
             Start
           </Button>
         </CardContent>
