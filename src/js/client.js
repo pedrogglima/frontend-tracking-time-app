@@ -1,7 +1,8 @@
-const checkStatus = async (response) => {
+import regeneratorRuntime from 'regenerator-runtime';
+
+const checkStatus = async response => {
   try {
     if (!response.ok) {
-      const respBody = await response.json();
       const error = new Error('HTTP Error' + response.statuText);
       error.status = response.statusText;
       error.response = response;
@@ -11,115 +12,109 @@ const checkStatus = async (response) => {
   } catch (err) {
     throw err;
   }
-}
+};
 
-export const getTimers = async (success) => {
+export const getTimers = async () => {
   try {
     const response = await fetch('/api/timers', {
       headers: {
         Accept: 'application/json',
       },
-    }
+    });
 
-    return checkStatus(response);
-
-  } catch(err) {
+    return await checkStatus(response);
+  } catch (err) {
     console.log(err);
     throw err;
   }
-}
+};
 
-export const createTime = async (data) => {
+export const createTime = async data => {
   try {
     const response = await fetch('/api/timers', {
       method: 'post',
       body: JSON.stringify(data),
       headers: {
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-    }
+    });
 
-    return checkStatus(response);
-
-  } catch(err) {
+    return await checkStatus(response);
+  } catch (err) {
     console.log(err);
     throw err;
   }
-}
+};
 
-export const updateTimer = async (data) => {
+export const updateTimer = async data => {
   try {
     const response = await fetch('/api/timers', {
       method: 'put',
       body: JSON.stringify(data),
       headers: {
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-    }
+    });
 
-    return checkStatus(response);
-
-  } catch(err) {
+    return await checkStatus(response);
+  } catch (err) {
     console.log(err);
     throw err;
   }
-}
+};
 
-export const deleteTimer = async (data) => {
+export const deleteTimer = async data => {
   try {
     const response = await fetch('/api/timers', {
       method: 'delete',
       body: JSON.stringify(data),
       headers: {
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-    }
+    });
 
-    return checkStatus(response);
-
-  } catch(err) {
+    return await checkStatus(response);
+  } catch (err) {
     console.log(err);
     throw err;
   }
-}
+};
 
-export const startTimer = async (data) => {
+export const startTimer = async data => {
   try {
     const response = await fetch('/api/timers/start', {
       method: 'post',
       body: JSON.stringify(data),
       headers: {
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-    }
+    });
 
-    return checkStatus(response);
-
-  } catch(err) {
+    return await checkStatus(response);
+  } catch (err) {
     console.log(err);
     throw err;
   }
-}
+};
 
-export const stopTimer = async (data) => {
+export const stopTimer = async data => {
   try {
     const response = await fetch('/api/timers/stop', {
       method: 'post',
       body: JSON.stringify(data),
       headers: {
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-    }
+    });
 
-    return checkStatus(response);
-
-  } catch(err) {
+    return await checkStatus(response);
+  } catch (err) {
     console.log(err);
     throw err;
   }
-}
+};

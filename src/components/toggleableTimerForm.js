@@ -17,7 +17,7 @@ class ToggleableTimerForm extends React.Component {
     this.setState({ isOpen: false });
   };
 
-  handleFormSubmit = (timer) => {
+  handleFormSubmit = timer => {
     this.props.onFormSubmit(timer);
     this.setState({ isOpen: false });
   };
@@ -33,12 +33,8 @@ class ToggleableTimerForm extends React.Component {
     } else {
       return (
         <Card>
-          <CardContent style={{textAlign:'center'}}>
-            <Fab
-              color="primary"
-              aria-label="Add"
-              onClick={this.handleFormOpen}
-            >
+          <CardContent style={{ textAlign: 'center' }}>
+            <Fab color="primary" aria-label="Add" onClick={this.handleFormOpen}>
               <span className="material-icons">add</span>
             </Fab>
           </CardContent>

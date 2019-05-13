@@ -7,7 +7,7 @@ class TimerActionButton extends React.Component {
       return (
         <Button
           variant="outlined"
-          color='primary'
+          color="primary"
           size="large"
           fullWidth={true}
           onClick={this.props.onStopClick}
@@ -19,7 +19,7 @@ class TimerActionButton extends React.Component {
       return (
         <Button
           variant="outlined"
-          color='primary'
+          color="primary"
           size="large"
           fullWidth={true}
           onClick={this.props.onStartClick}

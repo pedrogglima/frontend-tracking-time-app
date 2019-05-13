@@ -2,59 +2,60 @@ import React from 'react';
 import EditableTimerList from './editableTimerList.js';
 import ToggleableTimerForm from './toggleableTimerForm.js';
 import Grid from '@material-ui/core/Grid';
-import uuidv4 from 'uuid/v4';
-import { newTimer } from '../js/helpers.js'
+import { newTimer } from '../js/helpers.js';
+import * as Client from '../js/client.js';
+import regeneratorRuntime from 'regenerator-runtime'; // polyfill for await/async
 
 class TimersDashboard extends React.Component {
   state = {
-    timers: [
-      {
-        title: 'Practice squat',
-        project: 'Gym Chores',
-        id: uuidv4(),
-        elapsed: 5456099,
-        runningSince: Date.now(),
-      },
-      {
-        title: 'Bake squash',
-        project: 'Kitchen Chores',
-        id: uuidv4(),
-        elapsed: 1273998,
-        runningSince: null,
-      },
-    ],
+    timers: [],
   };
 
-  handleCreateFormSubmit = (timer) => {
+  componentDidMount() {
+    this.loadTimersFromServer();
+    setInterval(this.loadTimersFromServer, 5000);
+  }
+
+  loadTimersFromServer = async () => {
+    try {
+      const serverTimers = await Client.getTimers();
+      this.setState({ timers: serverTimers });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  handleCreateFormSubmit = timer => {
     this.createTimer(timer);
   };
 
-  handleEditFormSubmit = (attrs) => {
+  handleEditFormSubmit = attrs => {
     this.updateTimer(attrs);
   };
 
-  handleTrashClick = (timerId) => {
+  handleTrashClick = timerId => {
     this.deleteTimer(timerId);
   };
 
-  handleStartClick = (timerId) => {
+  handleStartClick = timerId => {
     this.startTimer(timerId);
   };
 
-  handleStopClick = (timerId) => {
+  handleStopClick = timerId => {
     this.stopTimer(timerId);
   };
 
-  createTimer = (timer) => {
+  createTimer = async timer => {
     const t = newTimer(timer);
     this.setState({
       timers: this.state.timers.concat(t),
     });
+    await Client.createTimer(t);
   };
 
-  updateTimer = (attrs) => {
+  updateTimer = async attrs => {
     this.setState({
-      timers: this.state.timers.map((timer) => {
+      timers: this.state.timers.map(timer => {
         if (timer.id === attrs.id) {
           return Object.assign({}, timer, {
             title: attrs.title,
@@ -65,19 +66,21 @@ class TimersDashboard extends React.Component {
         }
       }),
     });
+    await Client.updateTimer(attrs);
   };
 
-  deleteTimer = (timerId) => {
+  deleteTimer = async timerId => {
     this.setState({
       timers: this.state.timers.filter(t => t.id !== timerId),
     });
+    await Client.deleteTimer({ id: timerId });
   };
 
-  startTimer = (timerId) => {
+  startTimer = async timerId => {
     const now = Date.now();
 
     this.setState({
-      timers: this.state.timers.map((timer) => {
+      timers: this.state.timers.map(timer => {
         if (timer.id === timerId) {
           return Object.assign({}, timer, {
             runningSince: now,
@@ -87,13 +90,15 @@ class TimersDashboard extends React.Component {
         }
       }),
     });
+
+    await Client.startTimer({ id: timerId, start: now.toString() });
   };
 
-  stopTimer = (timerId) => {
+  stopTimer = async timerId => {
     const now = Date.now();
 
     this.setState({
-      timers: this.state.timers.map((timer) => {
+      timers: this.state.timers.map(timer => {
         if (timer.id === timerId) {
           const lastElapsed = now - timer.runningSince;
           return Object.assign({}, timer, {
@@ -105,20 +110,14 @@ class TimersDashboard extends React.Component {
         }
       }),
     });
+
+    await Client.stopTimer({ id: timerId, stop: now });
   };
 
   render() {
     return (
-      <Grid
-        container
-        direction="column"
-        alignItems="center"
-        justify="center"
-      >
-        <Grid
-          item
-          style={{ maxWidth: '300px', minWidth: '300px' }}
-        >
+      <Grid container direction="column" alignItems="center" justify="center">
+        <Grid item style={{ maxWidth: '300px', minWidth: '300px' }}>
           <Grid
             container
             direction="column"
@@ -136,9 +135,7 @@ class TimersDashboard extends React.Component {
               />
             </Grid>
             <Grid item>
-              <ToggleableTimerForm
-                onFormSubmit={this.handleCreateFormSubmit}
-              />
+              <ToggleableTimerForm onFormSubmit={this.handleCreateFormSubmit} />
             </Grid>
           </Grid>
         </Grid>

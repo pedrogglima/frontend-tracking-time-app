@@ -43,6 +43,7 @@
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "prettier": "1.17.0",
+    "regenerator-runtime": "^0.13.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "typescript": "^3.4.5",

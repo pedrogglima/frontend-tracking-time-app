@@ -29,18 +29,19 @@ class Timer extends React.Component {
 
   render() {
     const elapsedString = renderElapsedString(
-      this.props.elapsed, this.props.runningSince
+      this.props.elapsed,
+      this.props.runningSince
     );
     return (
       <Card>
         <CardContent>
-          <Typography variant='title' color="primary">
+          <Typography variant="title" color="primary">
             {this.props.title}
           </Typography>
           <Typography color="textSecondary" gutterBottom>
             {this.props.project}
           </Typography>
-          <Typography variant='h3' align='center' color="default" gutterBottom>
+          <Typography variant="h3" align="center" color="default" gutterBottom>
             {elapsedString}
           </Typography>
 
@@ -63,8 +64,7 @@ class Timer extends React.Component {
             timerIsRunning={!!this.props.runningSince}
             onStartClick={this.handleStartClick}
             onStopClick={this.handleStopClick}
-          >
-          </TimerActionButton>
+          />
         </CardContent>
       </Card>
     );

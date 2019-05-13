@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 
 class EditableTimerList extends React.Component {
   render() {
-    const timers = this.props.timers.map((timer) => (
+    const timers = this.props.timers.map(timer => (
       <Grid item>
         <EditableTimer
           key={timer.id}
@@ -21,7 +21,7 @@ class EditableTimerList extends React.Component {
       </Grid>
     ));
     return (
-      <div id='timers'>
+      <div id="timers">
         <Grid
           container
           direction="column"
