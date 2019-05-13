@@ -28,7 +28,7 @@ class TimersDashboard extends React.Component {
             </Grid>
             <Grid item>
               <ToggleableTimerForm
-                isOpen={true}
+                isOpen={false}
               />
             </Grid>
           </Grid>

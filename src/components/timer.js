@@ -4,10 +4,11 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import { renderElapsedString } from '../js/helpers.js'
 
 class Timer extends React.Component {
   render() {
-    const elapsedString = ''; //helpers.renderElapsedString(this.props.elapsed);
+    const elapsedString = renderElapsedString(this.props.elapsed);
     return (
       <Card>
         <CardContent>
@@ -18,7 +19,7 @@ class Timer extends React.Component {
             {this.props.project}
           </Typography>
           <Typography variant='h3' align='center' color="default" gutterBottom>
-            {elapsedString}02:20:30
+            {elapsedString}
           </Typography>
 
           <IconButton aria-label="Delete" style={{ float: 'right' }}>
