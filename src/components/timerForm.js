@@ -21,8 +21,16 @@ class TimerForm extends React.Component {
     this.setState({ project: e.target.value });
   };
 
+  handleSubmit = () => {
+    this.props.onFormSubmit({
+      id: this.props.id,
+      title: this.state.title,
+      project: this.state.project,
+    });
+  };
+
   render() {
-    const submitText = this.props.title ? 'Update' : 'Create';
+    const submitText = this.props.id ? 'Update' : 'Create';
     return (
       <Card>
         <CardContent>
@@ -36,10 +44,22 @@ class TimerForm extends React.Component {
             <Input id="input_project_id" value={this.state.project} onChange={this.handleProjectChange} />
           </FormControl>
           <div style={{width: '100%', marginTop: '10px'}}>
-            <Button variant="outlined" color='primary' size="large" style={{width: '50%'}}>
+            <Button
+              variant="outlined"
+              color='primary'
+              size="large"
+              style={{width: '50%'}}
+              onClick={this.handleSubmit}
+            >
               {submitText}
             </Button>
-            <Button variant="outlined" color='secondary' size="large" style={{width: '50%'}}>
+            <Button
+              variant="outlined"
+              color='secondary'
+              size="large"
+              style={{width: '50%'}}
+              onClick={this.props.onFormClose}
+            >
               Cancel
             </Button>
           </div>
