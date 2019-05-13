@@ -2,8 +2,28 @@ import React from 'react';
 import EditableTimerList from './editableTimerList.js';
 import ToggleableTimerForm from './toggleableTimerForm.js';
 import Grid from '@material-ui/core/Grid';
+import uuidv4 from 'uuid/v4';
 
 class TimersDashboard extends React.Component {
+  state = {
+    timers: [
+      {
+        title: 'Practice squat',
+        project: 'Gym Chores',
+        id: uuidv4(),
+        elapsed: 5456099,
+        runningSince: Date.now(),
+      },
+      {
+        title: 'Bake squash',
+        project: 'Kitchen Chores',
+        id: uuidv4(),
+        elapsed: 1273998,
+        runningSince: null,
+      },
+    ],
+  };
+
   render() {
     return (
       <Grid
@@ -24,7 +44,9 @@ class TimersDashboard extends React.Component {
             spacing={16}
           >
             <Grid item>
-              <EditableTimerList />
+              <EditableTimerList
+                timers={this.state.timers}
+              />
             </Grid>
             <Grid item>
               <ToggleableTimerForm

@@ -4,6 +4,18 @@ import Grid from '@material-ui/core/Grid';
 
 class EditableTimerList extends React.Component {
   render() {
+    const timers = this.props.timers.map((timer) => (
+      <Grid item>
+        <EditableTimer
+          key={timer.id}
+          id={timer.id}
+          title={timer.title}
+          project={timer.project}
+          elapsed={timer.elapsed}
+          runningSince={timer.runningSince}
+        />
+      </Grid>
+    ));
     return (
       <div id='timers'>
         <Grid
@@ -13,24 +25,7 @@ class EditableTimerList extends React.Component {
           justify="center"
           spacing={8}
         >
-          <Grid item>
-            <EditableTimer
-              title='Learn React'
-              project='Web Domination'
-              elapsed='8986300'
-              runningSince={null}
-              editFormOpen={false}
-            />
-          </Grid>
-          <Grid item>
-            <EditableTimer
-              title='Learn extreme ironing'
-              project='World Domination'
-              elapsed='3890985'
-              runningSince={null}
-              editFormOpen={true}
-            />
-          </Grid>
+          {timers}
         </Grid>
       </div>
     );

@@ -1,10 +1,10 @@
-import uuid from 'uuid/v4';
+import uuidv4 from 'uuid/v4';
 
 export const newTimer = (attrs = {}) => {
     const timer = {
       title: attrs.title || 'Timer',
       project: attrs.project || 'Project',
-      id: uuid.v4(),
+      id: uuidv4(),
       elapsed: 0,
     };
     return timer;

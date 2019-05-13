@@ -5,8 +5,16 @@ import CardContent from '@material-ui/core/CardContent';
 import Fab from '@material-ui/core/Fab';
 
 class ToggleableTimerForm extends React.Component {
+  state = {
+    isOpen: false,
+  };
+
+  handleFormOpen = () => {
+    this.setState({ isOpen: true });
+  };
+
   render() {
-    if (this.props.isOpen) {
+    if (this.state.isOpen) {
       return (
         <TimerForm />
       );
@@ -14,7 +22,11 @@ class ToggleableTimerForm extends React.Component {
       return (
         <Card>
           <CardContent style={{textAlign:'center'}}>
-            <Fab color="primary" aria-label="Add">
+            <Fab
+              color="primary"
+              aria-label="Add"
+              onClick={this.handleFormOpen}
+            >
               <span className="material-icons">add</span>
             </Fab>
           </CardContent>
