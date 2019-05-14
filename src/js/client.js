@@ -29,18 +29,18 @@ export const getTimers = async () => {
   }
 };
 
-export const createTime = async data => {
+export const createTimer = async data => {
   try {
-    const response = await fetch('/api/timers', {
+    const response = await fetch('http://localhost:3000/api/timers', {
       method: 'post',
       body: JSON.stringify(data),
       headers: {
-        Accept: 'application/json',
+        'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
     });
 
-    return await checkStatus(response);
+    await checkStatus(response);
   } catch (err) {
     console.log(err);
     throw err;

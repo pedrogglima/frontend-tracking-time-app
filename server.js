@@ -1,13 +1,17 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const port = process.env.PORT || 3000
 const dirPublic = path.join(__dirname, 'public');
 const DATA_FILE = path.join(__dirname, 'data.json');
 
 const app = express();
+
 app.use(express.static(dirPublic));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');

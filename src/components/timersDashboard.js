@@ -46,11 +46,15 @@ class TimersDashboard extends React.Component {
   };
 
   createTimer = async timer => {
-    const t = newTimer(timer);
-    this.setState({
-      timers: this.state.timers.concat(t),
-    });
-    await Client.createTimer(t);
+    try {
+      const t = newTimer(timer);
+      this.setState({
+        timers: this.state.timers.concat(t),
+      });
+      await Client.createTimer(t);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   updateTimer = async attrs => {
