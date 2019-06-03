@@ -1,4 +1,4 @@
-## O app
+## App
 
 O projeto mostra conceitos fundamentais utilizados pela biblioteca React. Alguns conceitos são: State, Props, Components, workflow de dados entre Components, Component's lifecycle e.g `componentMount` e `forceUpdateInterval`. 
 
